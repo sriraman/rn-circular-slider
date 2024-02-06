@@ -35,6 +35,12 @@ export default class CircularSlider extends PureComponent {
     this._containerRef = React.createRef()
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.value !== this.props.value) {
+      this.setState({value: this.props.value});
+    }
+  }
+
   _handlePanResponderGrant = () => {
     /*
      * 记录开始滑动开始时的滑块值、弧度和坐标，用户后续值的计算
